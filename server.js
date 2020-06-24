@@ -22,7 +22,7 @@ let account
 
 const client = new Client({
   host: 'localhost',
-  user: 'postgres',
+  user: 'bobbo',
   port: 5432,
   database: 'compliance',
   password: '11818Baby'
