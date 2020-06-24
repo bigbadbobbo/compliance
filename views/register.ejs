@@ -1,0 +1,46 @@
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <script>
+    function showAccount() {
+      var x = document.getElementById("account");
+      var y = document.getElementById("account_label");
+      if(x.style.visibility === 'hidden')
+      {
+        x.style.visibility = 'visible'
+        y.style.visibility = 'visible'
+      }
+      else
+      {
+        x.style.visibility = 'hidden'
+        y.style.visibility = 'hidden'
+      }
+    }
+  </script>
+</head>
+
+<h1>Register</h1>
+<form action="/register" method="post">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required>
+  </div>
+<div>
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" required>
+</div>
+<div>
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required>
+</div>
+<div>
+  <input type="checkbox" name="existing" id="existing" onclick="showAccount();">
+  <label for="existing">Link to existing account</label>
+</div>
+<div>
+  <label for="account" id="account_label" style="visibility:hidden;">Account Code</label>
+  <input type="text" name="account" id="account" style="visibility:hidden;">
+</div>
+<button type="submit">Register</button>
+  </form>
+<a href="/login">Login</a>

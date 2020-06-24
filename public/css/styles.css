@@ -1,0 +1,46 @@
+th {
+  background-color: lightgray;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.space {
+  background-color: black;
+}
+
+.policy_head {
+  background-color: #3FF0C3;
+}
+
+.procedure_head {
+  background-color: #3FEBF0;
+}
+
+.implement_head {
+  background-color: #F0C23F;
+}
+
+.measured_head {
+  background-color: #F4C6F9;
+}
+
+.managed_head {
+  background-color: #FAF436;
+}
+
+.legal_head {
+  background-color: #FAC5C8;
+}
+
+.header {
+  height: 24px;
+}
+
+#account_label, #account {
+  visibility: hidden;
+}

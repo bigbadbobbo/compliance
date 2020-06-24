@@ -1,0 +1,183 @@
+<head>
+  <meta charset="utf-8">
+  <title>Compliance</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<h1>Hi <%= name %></h1>
+<form action='/edit' method="POST">
+<table>
+  <tr>
+    <th  colspan="20" class="control_head">Legal and Regulatory Compliance Schedule</th>
+  </tr>
+  <tr>
+    <th class="control_head">Control</th>
+    <th colspan="3" class="policy_head">Policy</th>
+    <th colspan="3" class="procedure_head">Procedure</th>
+    <th colspan="6" class="implement_head">Implementation</th>
+    <th colspan="4" class="measured_head">Measured</th>
+    <th colspan="2" class="managed_head">Managed</th>
+    <th class="legal_head">Legal/Regulatory Requirements</th>
+  </tr>
+  <tr>
+    <th class="control_head"></th>
+    <th class="policy_head">Name of Policy</th>
+    <th class="policy_head">Location of Policy</th>
+    <th class="policy_head">Link to Policy</th>
+    <th class="procedure_head">Name of Procedure</th>
+    <th class="procedure_head">Location of Procedure</th>
+    <th class="procedure_head">Link to Procedure</th>
+    <th class="implement_head">Type of Evidence</th>
+    <th class="implement_head">Location of Evidence</th>
+    <th class="implement_head">Link to Evidence</th>
+    <th class="implement_head">Frequency of Performance</th>
+    <th class="implement_head">Date of Last Performance</th>
+    <th class="implement_head">Date of Next Performance</th>
+    <th class="measured_head">Owner and Manager</th>
+    <th class="measured_head">Criteria for Assessment</th>
+    <th class="measured_head">Results of Assessment</th>
+    <th class="measured_head">Date of Last Assessment</th>
+    <th class="managed_head">Date of Last Review of Policy and Procedure</th>
+    <th class="managed_head">Date of Next Review of Policy and Procedure</th>
+    <th class="legal_head"></th>
+  </tr>
+  <% let lastComposite = 'MM/DD/YYYY'
+  if(row.last_done){
+    let last = new Date(row.last_done)
+    let lastMonth = last.getMonth() + 1
+    let lastMonthString = lastMonth.toString()
+    if (lastMonth < 10) {
+      lastMonthString = '0' + lastMonthString }
+    let lastDay = last.getDate()
+    let lastDayString = lastDay.toString()
+    if (lastDay < 10) {
+      lastDayString = '0' + lastDayString }
+    let lastYear = last.getFullYear()
+    let lastYearString = lastYear.toString()
+    lastComposite = lastMonthString + '/' + lastDayString + '/' + lastYearString
+} %>
+
+  <% let nextComposite = 'MM/DD/YYYY'
+  if(row.next_to_do) {
+  next = new Date(row.next_to_do)
+   let nextMonth = next.getMonth() + 1
+   let nextMonthString = nextMonth.toString()
+   if (nextMonth < 10) {
+      nextMonthString = '0' + nextMonthString }
+   let nextDay = next.getDate()
+   let nextDayString = nextDay.toString()
+   if (nextDay < 10) {
+      nextDayString = '0' + nextDayString }
+   let nextYear = next.getFullYear()
+   let nextYearString = nextYear.toString()
+   nextComposite = nextMonthString + '/' + nextDayString + '/' + nextYearString
+ }%>
+
+ <% let lastAssessedComposite = 'MM/DD/YYYY'
+ if(row.last_assessed) {
+ next = new Date(row.last_assessed)
+  let nextMonth = next.getMonth() + 1
+  let nextMonthString = nextMonth.toString()
+  if (nextMonth < 10) {
+     nextMonthString = '0' + nextMonthString }
+  let nextDay = next.getDate()
+  let nextDayString = nextDay.toString()
+  if (nextDay < 10) {
+     nextDayString = '0' + nextDayString }
+  let nextYear = next.getFullYear()
+  let nextYearString = nextYear.toString()
+  lastAssessedComposite = nextMonthString + '/' + nextDayString + '/' + nextYearString
+}%>
+
+<% let lastReviewedComposite = 'MM/DD/YYYY'
+  if(row.last_reviewed){
+    let last = new Date(row.last_reviewed)
+    let lastMonth = last.getMonth() + 1
+    let lastMonthString = lastMonth.toString()
+    if (lastMonth < 10) {
+      lastMonthString = '0' + lastMonthString }
+    let lastDay = last.getDate()
+    let lastDayString = lastDay.toString()
+    if (lastDay < 10) {
+      lastDayString = '0' + lastDayString }
+    let lastYear = last.getFullYear()
+    let lastYearString = lastYear.toString()
+    lastReviewedComposite = lastMonthString + '/' + lastDayString + '/' + lastYearString
+} %>
+
+  <% let nextReviewComposite = 'MM/DD/YYYY'
+  if(row.next_review) {
+  next = new Date(row.next_review)
+   let nextMonth = next.getMonth() + 1
+   let nextMonthString = nextMonth.toString()
+   if (nextMonth < 10) {
+      nextMonthString = '0' + nextMonthString }
+   let nextDay = next.getDate()
+   let nextDayString = nextDay.toString()
+   if (nextDay < 10) {
+      nextDayString = '0' + nextDayString }
+   let nextYear = next.getFullYear()
+   let nextYearString = nextYear.toString()
+   nextReviewComposite = nextMonthString + '/' + nextDayString + '/' + nextYearString
+ }%>
+
+<tr>
+  <td><input type="text" name="control" id="control" value="<%= row.control %>"></td>
+  <td><input type="text" name="policy_name" id="policy_name" value="<%= row.policy_name %>"></td>
+  <td><input type="text" name="policy_location" id="policy_location" value="<%= row.policy_location %>"></td>
+  <td><input type="text" name="policy_link" id="policy_link" value="<%= row.policy_link %>"></td>
+  <td><input type="text" name="procedure_name" id="procedure_name" value="<%= row.procedure_name %>"></td>
+  <td><input type="text" name="procedure_location" id="procedure_location" value="<%= row.procedure_location %>"></td>
+  <td><input type="text" name="procedure_link" id="procedure_link" value="<%= row.procedure_link %>"></td>
+  <td><input type="text" name="evidence_type" id="evidence_type" value="<%= row.evidence_type %>"></td>
+  <td><input type="text" name="evidence_location" id="evidence_location" value="<%= row.evidence_location %>"></td>
+  <td><input type="text" name="evidence_link" id="evidence_link" value="<%= row.evidence_link %>"></td>
+  <td><select name="freq" id="freq" value="<%= row.freq %>">
+    <option value="select one">
+      select one
+    </option>
+    <% if (row.freq == 'one time'){%>
+    <option value="one time" selected>
+      one time
+    </option>
+    <% }else{%>
+      <option value="one time">
+        one time
+      </option>
+    <% } %>
+    <% if (row.freq == 'quarterly'){%>
+    <option value="quarterly" selected>
+      quarterly
+    </option>
+    <% }else{%>
+      <option value="quarterly">
+        quarterly
+      </option>
+    <% } %>
+
+
+    <% if (row.freq == 'annually'){%>
+    <option value="annually" selected>
+      annually
+    </option>
+    <% }else{%>
+      <option value="annually">
+        annually
+      </option>
+    <% } %>
+  </td>
+  <td><input type="date" name="last_done" id="last_done" value=<%= lastComposite %>></td>
+  <td><input type="date" name="next_to_do" id="next_to_do" value=<%= nextComposite %>></td>
+<!--    <td>< %= row.how_to_comply %></td>  -->
+  <td><input type="text" name="owner" id="owner" value="<%= row.owner %>"></td>
+  <td><input type="text" name="criteria" id="criteria" value="<%= row.criteria %>"></td>
+  <td><input type="text" name="results" id="results" value="<%= row.results %>"></td>
+  <td><input type="date" name="last_assessed" id="last_assessed" value=<%= lastAssessedComposite %>></td>
+  <td><input type="date" name="last_reviewed" id="last_reviewed" value=<%= lastReviewedComposite %>></td>
+  <td><input type="date" name="next_review" id="next_review" value=<%= nextReviewComposite %>></td>
+  <td><input type="text" name="legal_requirements" id="legal_requirements" value="<%= row.legal_requirements %>"></td>
+</tr>
+</table>
+  <input type="hidden" name="id" id="id" value="<%= row.id %>">
+  <input type="hidden" name="is_header" id="is_header" value="<%= row.is_header %>">
+  <button type="submit">save</button>
+  </form>
